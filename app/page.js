@@ -24,7 +24,45 @@ export default function Home() {
         Drop a video link. Leave with a camera-ready short. No editing, no guesswork.
       </p>
 
-      <div style={{ marginTop: '40px', display: 'flex', gap: '12px' }}>
+            <div
+        style={{
+          marginTop: '50px',
+          position: 'relative',
+          width: '280px',
+          borderRadius: '12px',
+          overflow: 'hidden',
+          border: '1px solid #3a3d42',
+        }}
+      >
+        <div
+          style={{
+            width: '100%',
+            height: '160px',
+            backgroundColor: '#212327',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#5a5d62',
+            fontSize: '13px',
+          }}
+        >
+          Video Preview
+        </div>
+        <span
+          style={{
+            position: 'absolute',
+            bottom: '8px',
+            right: '8px',
+            backgroundColor: 'rgba(0,0,0,0.7)',
+            color: '#f2f3f4',
+            fontSize: '11px',
+            padding: '2px 6px',
+            borderRadius: '4px',
+          }}
+        >
+          2:01:44
+        </span>
+      </div>
         <input
           type="text"
           placeholder="Drop a video link"
