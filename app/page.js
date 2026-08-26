@@ -24,7 +24,7 @@ export default function Home() {
         Drop a video link. Leave with a camera-ready short. No editing, no guesswork.
       </p>
 
-            <div
+      <div
         style={{
           marginTop: '50px',
           position: 'relative',
@@ -63,6 +63,8 @@ export default function Home() {
           2:01:44
         </span>
       </div>
+
+      <div style={{ marginTop: '40px', display: 'flex', gap: '12px' }}>
         <input
           type="text"
           placeholder="Drop a video link"
