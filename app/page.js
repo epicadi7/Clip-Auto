@@ -16,7 +16,7 @@ export default function Home() {
       {/* Nav */}
       <nav style={styles.nav}>
         <div style={styles.logo}>
-          <span style={styles.logoMark}>◆</span> ClipForge
+          <span style={styles.logoMark}>◆</span> ClipAuto
         </div>
         <div style={styles.navLinks}>
           <a href="#features" style={styles.navLink}>Features</a>
