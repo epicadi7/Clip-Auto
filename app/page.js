@@ -17,7 +17,7 @@ export default function Home() {
       <nav style={styles.nav}>
         <div style={styles.navCol}>
           <div style={styles.logo}>
-            <span style={styles.logoMark}>◆</span> ClipForge
+            <span style={styles.logoMark}>◆</span> ClipAuto
           </div>
         </div>
         <div style={{ ...styles.navCol, ...styles.navLinks }}>
