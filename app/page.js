@@ -26,8 +26,8 @@ export default function Home() {
           <a href="#pricing" style={styles.navLink}>Pricing</a>
         </div>
         <div style={{ ...styles.navCol, ...styles.navActions }}>
-          <a href="#" style={styles.signInLink}>Sign in</a>
-          <a href="#" style={styles.ctaButton}>Sign up — it's free</a>
+         <a href="/login" style={styles.signInLink}>Sign in</a>
+<a href="/login" style={styles.ctaButton}>Sign up — it's free</a>
         </div>
       </nav>
 
