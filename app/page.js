@@ -15,15 +15,17 @@ export default function Home() {
 
       {/* Nav */}
       <nav style={styles.nav}>
-        <div style={styles.logo}>
-          <span style={styles.logoMark}>◆</span> ClipAuto
+        <div style={styles.navCol}>
+          <div style={styles.logo}>
+            <span style={styles.logoMark}>◆</span> ClipForge
+          </div>
         </div>
-        <div style={styles.navLinks}>
+        <div style={{ ...styles.navCol, ...styles.navLinks }}>
           <a href="#features" style={styles.navLink}>Features</a>
           <a href="#how" style={styles.navLink}>How it works</a>
           <a href="#pricing" style={styles.navLink}>Pricing</a>
         </div>
-        <div style={styles.navActions}>
+        <div style={{ ...styles.navCol, ...styles.navActions }}>
           <a href="#" style={styles.signInLink}>Sign in</a>
           <a href="#" style={styles.ctaButton}>Sign up — it's free</a>
         </div>
@@ -114,6 +116,42 @@ export default function Home() {
         </div>
       </section>
 
+      {/* How it works */}
+      <section id="how" style={styles.features}>
+        <h2 style={styles.sectionTitle}>How it works</h2>
+        <div style={styles.featureGrid}>
+          {[
+            { step: "1", title: "Drop a link", desc: "Paste any long-form video URL to get started." },
+            { step: "2", title: "AI finds the highlights", desc: "Our model scans the video and scores the most shareable moments." },
+            { step: "3", title: "Publish everywhere", desc: "Export ready-to-post clips, captioned and formatted for every platform." },
+          ].map((s, i) => (
+            <div key={i} style={styles.featureCard}>
+              <div style={styles.stepNumber}>{s.step}</div>
+              <h3 style={styles.featureTitle}>{s.title}</h3>
+              <p style={styles.featureDesc}>{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section id="pricing" style={styles.features}>
+        <h2 style={styles.sectionTitle}>Simple pricing</h2>
+        <div style={styles.featureGrid}>
+          {[
+            { plan: "Free", price: "$0", desc: "A few clips a month to try it out." },
+            { plan: "Pro", price: "$29/mo", desc: "Unlimited clips, priority processing, no watermark." },
+            { plan: "Team", price: "$99/mo", desc: "Everything in Pro, plus shared workspaces and scheduling." },
+          ].map((p, i) => (
+            <div key={i} style={styles.featureCard}>
+              <h3 style={styles.featureTitle}>{p.plan}</h3>
+              <div style={styles.priceNumber}>{p.price}</div>
+              <p style={styles.featureDesc}>{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Footer */}
       <footer style={styles.footer}>
         <span>© 2026 ClipForge. All rights reserved.</span>
@@ -178,8 +216,12 @@ const styles = {
     zIndex: 2,
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between",
     padding: "24px 64px",
+  },
+  navCol: {
+    flex: 1,
+    display: "flex",
+    alignItems: "center",
   },
   logo: {
     fontSize: "20px",
@@ -189,13 +231,31 @@ const styles = {
     gap: "8px",
   },
   logoMark: { color: "#c86dd7" },
-  navLinks: { display: "flex", gap: "32px" },
+  navLinks: { justifyContent: "center", gap: "32px" },
   navLink: {
     color: "rgba(255,255,255,0.7)",
     textDecoration: "none",
     fontSize: "14px",
   },
-  navActions: { display: "flex", alignItems: "center", gap: "20px" },
+  navActions: { justifyContent: "flex-end", gap: "20px" },
+  stepNumber: {
+    width: "36px",
+    height: "36px",
+    borderRadius: "10px",
+    background: "linear-gradient(135deg, #ff9a9e, #7d8bff)",
+    marginBottom: "16px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: "15px",
+    fontWeight: 700,
+    color: "#050505",
+  },
+  priceNumber: {
+    fontSize: "28px",
+    fontWeight: 700,
+    margin: "6px 0 10px",
+  },
   signInLink: {
     color: "rgba(255,255,255,0.8)",
     textDecoration: "none",
