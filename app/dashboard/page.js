@@ -104,11 +104,30 @@ export default function Dashboard() {
       <main style={styles.main}>
         <div style={styles.bgBlob} />
 
-        <header style={styles.header}>
-          <h1 style={styles.title}>Your videos</h1>
-          <p style={styles.subtitle}>
-            Drop a link below and we'll queue it up for clipping.
-          </p>
+                <header style={{ ...styles.header, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+          <div>
+            <h1 style={styles.title}>Your videos</h1>
+            <p style={styles.subtitle}>
+              Drop a link below and we'll queue it up for clipping.
+            </p>
+          </div>
+          <div
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '50%',
+              backgroundColor: '#e8722c',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#1a1c1f',
+              fontWeight: 700,
+              fontSize: '16px',
+              flexShrink: 0,
+            }}
+          >
+            A
+          </div>
         </header>
 
         <form onSubmit={handleSubmit} style={styles.inputRow}>
