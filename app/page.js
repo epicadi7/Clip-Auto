@@ -159,7 +159,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer style={styles.footer}>
-        <span>© 2026 ClipForge. All rights reserved.</span>
+        <span>© 2026 ClipAuto. All rights reserved.</span>
       </footer>
     </div>
   );
