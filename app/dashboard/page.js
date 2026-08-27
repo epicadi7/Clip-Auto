@@ -89,8 +89,8 @@ export default function Dashboard() {
           <div style={{ ...styles.navItem, ...styles.navItemActive }}>
             Dashboard
           </div>
-          <div style={styles.navItem}>My Clips</div>
-          <div style={styles.navItem}>Settings</div>
+         <Link href="/dashboard/clips" style={styles.navItem}>My Clips</Link>
+<Link href="/dashboard/settings" style={styles.navItem}>Settings</Link>
         </nav>
 
         <div style={styles.sidebarFooter}>
