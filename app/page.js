@@ -106,12 +106,12 @@ export default function Home() {
       <section id="features" style={styles.features}>
         <h2 style={styles.sectionTitle}>Everything you need to go viral</h2>
         <div style={styles.featureGrid}>
-          {[
-            { title: "Auto Import", desc: "Pulls the latest videos from your channel automatically." },
-            { title: "AI Highlight Detection", desc: "Finds the most engaging moments in any video, instantly." },
-            { title: "Auto Captions", desc: "Burns in clean, styled captions with zero manual work." },
-            { title: "One-click Publish", desc: "Push finished clips straight to every platform you use." },
-          ].map((f, i) => (
+         {[
+  { title: "Auto Import", desc: "Pulls the latest videos from your channel automatically.", icon: "📥" },
+  { title: "AI Highlight Detection", desc: "Finds the most engaging moments in any video, instantly.", icon: "🎯" },
+  { title: "Auto Captions", desc: "Burns in clean, styled captions with zero manual work.", icon: "💬" },
+  { title: "One-click Publish", desc: "Push finished clips straight to every platform you use.", icon: "🚀" },
+].map((f, i) => (
             <div key={i} style={styles.featureCard}>
               <div style={styles.featureIcon} />
               <h3 style={styles.featureTitle}>{f.title}</h3>
