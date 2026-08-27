@@ -81,7 +81,7 @@ export default function Dashboard() {
       {/* Sidebar */}
       <aside style={styles.sidebar}>
         <div style={styles.logo}>
-          <span style={styles.logoMark}>◆</span> ClipForge
+          <span style={styles.logoMark}>◆</span> ClipAuto
         </div>
 
         <nav style={styles.sidebarNav}>
