@@ -5,6 +5,11 @@ import { useState } from "react";
 export default function Home() {
   const [videoUrl, setVideoUrl] = useState("");
 
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   return (
     <div style={styles.page}>
       {/* Background texture layer */}
@@ -21,9 +26,9 @@ export default function Home() {
           </div>
         </div>
         <div style={{ ...styles.navCol, ...styles.navLinks }}>
-          <a href="#features" style={styles.navLink}>Features</a>
-          <a href="#how" style={styles.navLink}>How it works</a>
-          <a href="#pricing" style={styles.navLink}>Pricing</a>
+          <button onClick={() => scrollToSection("features")} style={styles.navLink}>Features</button>
+          <button onClick={() => scrollToSection("how")} style={styles.navLink}>How it works</button>
+          <button onClick={() => scrollToSection("pricing")} style={styles.navLink}>Pricing</button>
         </div>
         <div style={{ ...styles.navCol, ...styles.navActions }}>
          <a href="/login" style={styles.signInLink}>Sign in</a>
@@ -168,7 +173,6 @@ const styles = {
     color: "#f5f5f7",
     fontFamily:
       "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-    overflow: "hidden",
   },
   bgBlobTopLeft: {
     position: "absolute",
@@ -236,6 +240,10 @@ const styles = {
     color: "rgba(255,255,255,0.7)",
     textDecoration: "none",
     fontSize: "14px",
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    fontFamily: "inherit",
   },
   navActions: { justifyContent: "flex-end", gap: "20px" },
   stepNumber: {
