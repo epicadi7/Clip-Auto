@@ -435,12 +435,10 @@ const styles = {
     padding: "28px",
   },
   featureIcon: {
-    width: "36px",
-    height: "36px",
-    borderRadius: "10px",
-    background: "linear-gradient(135deg, #ff9a9e, #7d8bff)",
-    marginBottom: "16px",
-  },
+  fontSize: "32px",
+  marginBottom: "16px",
+  lineHeight: 1,
+},
   featureTitle: { fontSize: "17px", fontWeight: 600, margin: "0 0 8px" },
   featureDesc: {
     fontSize: "14px",
