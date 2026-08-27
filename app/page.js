@@ -144,9 +144,9 @@ export default function Home() {
         <h2 style={styles.sectionTitle}>Simple pricing</h2>
         <div style={styles.featureGrid}>
           {[
-            { plan: "Free", price: "$0", desc: "A few clips a month to try it out." },
-            { plan: "Pro", price: "$29/mo", desc: "Unlimited clips, priority processing, no watermark." },
-            { plan: "Team", price: "$99/mo", desc: "Everything in Pro, plus shared workspaces and scheduling." },
+            { plan: "Free", price: "₹0", desc: "Clip 1 video under 15 minutes, once a week — perfect for trying it out." },
+            { plan: "Pro", price: "₹99/mo", desc: "Clip up to 10 videos under 20 minutes each month, with faster processing." },
+            { plan: "Professional", price: "₹499/mo", desc: "Unlimited monthly clips with no video count or length restrictions, plus priority processing and no watermark." },
           ].map((p, i) => (
             <div key={i} style={styles.featureCard}>
               <h3 style={styles.featureTitle}>{p.plan}</h3>
