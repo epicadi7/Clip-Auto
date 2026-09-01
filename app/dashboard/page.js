@@ -43,7 +43,7 @@ export default function Dashboard() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setError("");
+    setError("");   console.log("handleSubmit fired, videoUrl =", videoUrl);
 
     if (!videoUrl.trim()) return;
 
