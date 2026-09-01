@@ -43,16 +43,23 @@ export default function Dashboard() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setError("");   console.log("handleSubmit fired, videoUrl =", videoUrl);
+    setError("");
+    console.log("handleSubmit fired, videoUrl =", videoUrl);
 
     if (!videoUrl.trim()) return;
 
     setSubmitting(true);
-    const { error } = await supabase.from("videos").insert({
-      user_id: user.id,
-      youtube_url: videoUrl.trim(),
-      status: "pending",
-    });
+
+    const { data, error } = await supabase
+      .from("videos")
+      .insert({
+        user_id: user.id,
+        youtube_url: videoUrl.trim(),
+        status: "pending",
+      })
+      .select()
+      .single();
+
     setSubmitting(false);
 
     if (error) {
@@ -62,6 +69,13 @@ export default function Dashboard() {
 
     setVideoUrl("");
     fetchVideos(user.id);
+
+    // Kick off backend processing — don't wait for it to finish
+    fetch("https://clipauto-worker.onrender.com/process", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url: data.youtube_url, videoId: data.id }),
+    }).catch((err) => console.error("Failed to trigger processing:", err));
   }
 
   async function handleLogout() {
