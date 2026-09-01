@@ -3,6 +3,19 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+const topoSvg = `<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'>
+  <g fill='none' stroke-width='1.1' opacity='0.6' transform='translate(60,60)'>
+    <path stroke='#ff6b81' d='M0,-38 C22,-35 35,-22 37,0 C39,22 25,35 3,37 C-16,39 -35,25 -37,3 C-39,-16 -22,-35 0,-38 Z'/>
+    <path stroke='#ffd166' d='M0,-52 C30,-48 48,-30 50,0 C52,30 34,48 4,50 C-22,52 -48,34 -50,4 C-52,-22 -30,-48 0,-52 Z'/>
+    <path stroke='#4ecdc4' d='M0,-66 C38,-61 61,-38 63,0 C65,38 43,61 5,63 C-28,65 -61,43 -63,5 C-65,-28 -38,-61 0,-66 Z'/>
+    <path stroke='#7d8bff' d='M0,-80 C46,-74 74,-46 76,0 C78,46 52,74 6,76 C-34,78 -74,52 -76,6 C-78,-34 -46,-74 0,-80 Z'/>
+  </g>
+  <g fill='none' stroke-width='1' opacity='0.4' transform='translate(170,170)'>
+    <path stroke='#c86dd7' d='M0,-20 C12,-18 19,-11 20,0 C21,11 13,19 2,20 C-8,21 -19,13 -20,2 C-21,-8 -11,-19 0,-20 Z'/>
+    <path stroke='#ff9a9e' d='M0,-32 C18,-29 29,-18 30,0 C31,18 20,29 3,30 C-13,31 -29,20 -30,3 C-31,-13 -18,-29 0,-32 Z'/>
+  </g>
+</svg>`;
+
 export default function Home() {
   const [videoUrl, setVideoUrl] = useState("");
   const router = useRouter();
@@ -28,6 +41,12 @@ export default function Home() {
       <div style={styles.bgBlobTopLeft} />
       <div style={styles.bgBlobTopRight} />
       <div style={styles.bgBlobBottom} />
+      <div
+        style={{
+          ...styles.topoLayer,
+          backgroundImage: `url("data:image/svg+xml,${encodeURIComponent(topoSvg)}")`,
+        }}
+      />
       <div style={styles.grain} />
 
       {/* Nav */}
@@ -119,13 +138,15 @@ export default function Home() {
         <h2 style={styles.sectionTitle}>Everything you need to go viral</h2>
         <div style={styles.featureGrid}>
       {[
-  { title: "Auto Import", desc: "Pulls the latest videos from your channel automatically.", icon: "📥" },
-  { title: "AI Highlight Detection", desc: "Finds the most engaging moments in any video, instantly.", icon: "🎯" },
-  { title: "Auto Captions", desc: "Burns in clean, styled captions with zero manual work.", icon: "💬" },
-  { title: "One-click Publish", desc: "Push finished clips straight to every platform you use.", icon: "🚀" },
+  { title: "Auto Import", desc: "Pulls the latest videos from your channel automatically.", icon: "📥", tint: "#ff6b81" },
+  { title: "AI Highlight Detection", desc: "Finds the most engaging moments in any video, instantly.", icon: "🎯", tint: "#7d8bff" },
+  { title: "Auto Captions", desc: "Burns in clean, styled captions with zero manual work.", icon: "💬", tint: "#4ecdc4" },
+  { title: "One-click Publish", desc: "Push finished clips straight to every platform you use.", icon: "🚀", tint: "#ffd166" },
 ].map((f, i) => (
   <div key={i} style={styles.featureCard}>
-    <div style={styles.featureIcon}>{f.icon}</div>
+    <div style={{ ...styles.featureIconWrap, background: `${f.tint}22`, border: `1px solid ${f.tint}55` }}>
+      <span style={styles.featureIcon}>{f.icon}</span>
+    </div>
     <h3 style={styles.featureTitle}>{f.title}</h3>
     <p style={styles.featureDesc}>{f.desc}</p>
   </div>
@@ -183,6 +204,7 @@ const styles = {
     minHeight: "100vh",
     background: "#050505",
     color: "#f5f5f7",
+    overflow: "hidden",
     fontFamily:
       "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
   },
@@ -193,7 +215,7 @@ const styles = {
     width: "600px",
     height: "600px",
     background:
-      "radial-gradient(circle, rgba(255,140,160,0.25) 0%, rgba(200,109,215,0.12) 45%, transparent 70%)",
+      "radial-gradient(circle, rgba(255,140,160,0.32) 0%, rgba(200,109,215,0.16) 45%, transparent 70%)",
     filter: "blur(60px)",
     pointerEvents: "none",
   },
@@ -204,7 +226,7 @@ const styles = {
     width: "700px",
     height: "700px",
     background:
-      "radial-gradient(circle, rgba(120,140,255,0.22) 0%, rgba(80,100,255,0.1) 45%, transparent 70%)",
+      "radial-gradient(circle, rgba(120,140,255,0.3) 0%, rgba(80,100,255,0.14) 45%, transparent 70%)",
     filter: "blur(70px)",
     pointerEvents: "none",
   },
@@ -215,8 +237,17 @@ const styles = {
     width: "800px",
     height: "800px",
     background:
-      "radial-gradient(circle, rgba(255,180,140,0.12) 0%, transparent 60%)",
+      "radial-gradient(circle, rgba(255,180,140,0.18) 0%, transparent 60%)",
     filter: "blur(80px)",
+    pointerEvents: "none",
+  },
+  topoLayer: {
+    position: "absolute",
+    inset: 0,
+    backgroundRepeat: "repeat",
+    backgroundSize: "220px 220px",
+    opacity: 0.55,
+    mixBlendMode: "screen",
     pointerEvents: "none",
   },
   grain: {
@@ -275,6 +306,9 @@ const styles = {
     fontSize: "28px",
     fontWeight: 700,
     margin: "6px 0 10px",
+    background: "linear-gradient(90deg, #ff9a9e, #c86dd7)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
   },
   signInLink: {
     color: "rgba(255,255,255,0.8)",
@@ -302,10 +336,10 @@ const styles = {
     display: "inline-block",
     padding: "6px 16px",
     borderRadius: "999px",
-    background: "rgba(255,255,255,0.06)",
-    border: "1px solid rgba(255,255,255,0.1)",
+    background: "rgba(200,109,215,0.12)",
+    border: "1px solid rgba(200,109,215,0.35)",
     fontSize: "13px",
-    color: "rgba(255,255,255,0.75)",
+    color: "#e6b8f0",
     marginBottom: "24px",
   },
   heroTitle: {
@@ -446,11 +480,19 @@ const styles = {
     borderRadius: "16px",
     padding: "28px",
   },
+  featureIconWrap: {
+    width: "48px",
+    height: "48px",
+    borderRadius: "12px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: "16px",
+  },
   featureIcon: {
-  fontSize: "32px",
-  marginBottom: "16px",
-  lineHeight: 1,
-},
+    fontSize: "22px",
+    lineHeight: 1,
+  },
   featureTitle: { fontSize: "17px", fontWeight: 600, margin: "0 0 8px" },
   featureDesc: {
     fontSize: "14px",
